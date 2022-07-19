@@ -8,14 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController ,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
+
     
     private let table: UITableView  =  {
         let table = UITableView()
@@ -28,6 +21,21 @@ class ViewController: UIViewController ,UITableViewDataSource{
         view.addSubview(table)
         title = "Todo List"
         table.dataSource = self
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        table.frame = view.bounds
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "cell",for: indexPath)
+        
+        return cell
     }
 
 
